@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
     BASE_DIR.joinpath("static_files"),
 ]
 
-# Public media files (CSS, JavaScript, Images)
+# Public media files
 
 MEDIA_ROOT = BASE_DIR.joinpath('media')
 MEDIA_URL = '/media/'
