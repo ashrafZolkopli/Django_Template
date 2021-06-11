@@ -10,6 +10,7 @@ django = {extras = ["argon2"], version = "*"}
 python-decouple = "*"
 django-password-validators = "*"
 django-zxcvbn-password = "*"
+django-restricted-sessions = "*"
 
 [requires]
 python_version = "3.9"
