@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1056b01d43afa43bc5cbc935b8bcc6ce4a0256df21e47ad2b0cd50f7a1346a6b"
+            "sha256": "6fb43e95866914164fba865f3c055bffff72d6dddef6a764a7f56e9a420e0971"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -124,6 +124,14 @@
             "index": "pypi",
             "version": "==1.6.0"
         },
+        "django-zxcvbn-password": {
+            "hashes": [
+                "sha256:b188d50ae93afe2ccf8f71850d6adfef8ccdfe779b2acfe3c777b412bcea87e6",
+                "sha256:f8d8577e9e028d0b67d93338e3e90af69f6c36e9ca9bc56ccdd592851d67d299"
+            ],
+            "index": "pypi",
+            "version": "==2.1.0"
+        },
         "pycparser": {
             "hashes": [
                 "sha256:2d475327684562c3a96cc71adf7dc8c4f0565175cf86b6d7a404ff4c771f15f0",
@@ -162,6 +170,12 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.1"
+        },
+        "zxcvbn": {
+            "hashes": [
+                "sha256:151bd816817e645e9064c354b13544f85137ea3320ca3be1fb6873ea75ef7dc1"
+            ],
+            "version": "==4.4.28"
         }
     },
     "develop": {}

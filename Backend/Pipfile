@@ -9,6 +9,7 @@ verify_ssl = true
 django = {extras = ["argon2"], version = "*"}
 python-decouple = "*"
 django-password-validators = "*"
+django-zxcvbn-password = "*"
 
 [requires]
 python_version = "3.9"

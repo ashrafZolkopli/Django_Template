@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     # Django-Password-validators
     'django_password_validators',
     'django_password_validators.password_history',
+
+    # Django-zxcvbn-password
+    'zxcvbn_password',
+
+
 ]
 
 MIDDLEWARE = [
@@ -125,6 +130,13 @@ AUTH_PASSWORD_VALIDATORS = [
             'min_length_lower': 1,
             'min_length_upper': 1,
             'special_characters': "~!@#$%^&*()_+{}\":;'[]-"
+        }
+    },
+    {
+        'NAME': 'zxcvbn_password.ZXCVBNValidator',
+        'OPTIONS': {
+            'min_score': 3,
+            'user_attributes': ('username', 'email', 'first_name', 'last_name')
         }
     },
 ]
