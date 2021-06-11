@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Django-Password-validators
+    'django_password_validators',
+    'django_password_validators.password_history',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +109,24 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    # Django-Password-validators
+    {
+        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
+        'OPTIONS': {
+            'last_passwords': 10
+        }
+    },
+    {
+        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
+        'OPTIONS': {
+            'min_length_digit': 1,
+            'min_length_alpha': 1,
+            'min_length_special': 1,
+            'min_length_lower': 1,
+            'min_length_upper': 1,
+            'special_characters': "~!@#$%^&*()_+{}\":;'[]-"
+        }
+    },
 ]
 
 PASSWORD_HASHERS = [
@@ -147,3 +169,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django-password-validator settings
+# https://github.com/fizista/django-password-validators
+DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'

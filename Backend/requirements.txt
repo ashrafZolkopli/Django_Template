@@ -9,6 +9,7 @@
 argon2-cffi==20.1.0
 asgiref==3.3.4; python_version >= '3.6'
 cffi==1.14.5
+django-password-validators==1.6.0
 django[argon2]==3.2.4
 pycparser==2.20; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
 python-decouple==3.4
