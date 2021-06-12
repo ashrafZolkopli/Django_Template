@@ -61,9 +61,12 @@ MIDDLEWARE = [
 
     # Django-Restrict-Sessions
     'restrictedsessions.middleware.RestrictedSessionsMiddleware',
-    
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Custom User Middleware
+    'User.middleware.PreventConcurrentStaffLogin'
 ]
 
 ROOT_URLCONF = 'Backend.urls'
@@ -107,26 +110,27 @@ AUTH_USER_MODEL = 'User.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa
     },
+
     # Django-Password-validators
     {
-        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
+        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',  # noqa
         'OPTIONS': {
             'last_passwords': 10
         }
     },
     {
-        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
+        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',  # noqa
         'OPTIONS': {
             'min_length_digit': 1,
             'min_length_alpha': 1,
@@ -188,4 +192,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django-password-validator settings
 # https://github.com/fizista/django-password-validators
-DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'
+DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'  # noqa
