@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from decouple import config, Csv
+from django.shortcuts import redirect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    # 'django.contrib.sessions',
+
+    # Django-user-sessions
+    'user_sessions'
+
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -48,13 +53,15 @@ INSTALLED_APPS = [
 
     # Django-zxcvbn-password
     'zxcvbn_password',
-
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+
+    # Django-user-sessions
+    'user_sessions.middleware.SessionMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,7 +73,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # Custom User Middleware
-    'User.middleware.PreventConcurrentStaffLogin'
+    'User.middleware.PreventConcurrentStaffLogin',
+
+    # django-xforwardedfor-middleware
+    # https://github.com/allo-/django-xforwardedfor-middleware
+    'x_forwarded_for.middleware.XForwardedForMiddleware',
 ]
 
 ROOT_URLCONF = 'Backend.urls'
@@ -193,3 +204,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django-password-validator settings
 # https://github.com/fizista/django-password-validators
 DPV_DEFAULT_HISTORY_HASHER = 'django_password_validators.password_history.hashers.HistoryHasher'  # noqa
+
+# GeoIP2 settings
+# https://docs.djangoproject.com/en/3.2/ref/contrib/gis/geoip2/
+GEOIP_PATH = BASE_DIR.joinpath("GeoIP")
+
+# Django-user-sessions
+# https://django-user-sessions.readthedocs.io/en/stable/installation.html
+SESSION_ENGINE = 'user_sessions.backends.db'
+
+
+# Common Django Settings
+LOGOUT_REDIRECT_URL = redirect("/")
+
+SILENCED_SYSTEM_CHECKS = ['admin.E410']

@@ -11,6 +11,9 @@ python-decouple = "*"
 django-password-validators = "*"
 django-zxcvbn-password = "*"
 django-restricted-sessions = "*"
+geoip2 = "*"
+django-user-sessions = "*"
+django-xforwardedfor-middleware = "==2.0"
 
 [requires]
 python_version = "3.9"
