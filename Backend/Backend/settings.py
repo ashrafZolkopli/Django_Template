@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 
     # Django-admin-honeypot
     'admin_honeypot',
+
+    # Django-honeypot
+    'honeypot',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +83,10 @@ MIDDLEWARE = [
     # django-xforwardedfor-middleware
     # https://github.com/allo-/django-xforwardedfor-middleware
     'x_forwarded_for.middleware.XForwardedForMiddleware',
+
+    # Django-honeypot
+    # https://pypi.org/project/django-honeypot/
+    'honeypot.middleware.HoneypotMiddleware',
 ]
 
 ROOT_URLCONF = 'Backend.urls'
