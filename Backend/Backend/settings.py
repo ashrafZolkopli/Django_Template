@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from decouple import config, Csv
-from django.shortcuts import redirect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',
 
     # Django-user-sessions
-    'user_sessions'
+    'user_sessions',
 
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -53,6 +52,9 @@ INSTALLED_APPS = [
 
     # Django-zxcvbn-password
     'zxcvbn_password',
+
+    # Django-admin-honeypot
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
@@ -215,6 +217,6 @@ SESSION_ENGINE = 'user_sessions.backends.db'
 
 
 # Common Django Settings
-LOGOUT_REDIRECT_URL = redirect("/")
+LOGOUT_REDIRECT_URL = "/"
 
 SILENCED_SYSTEM_CHECKS = ['admin.E410']
