@@ -58,6 +58,10 @@ INSTALLED_APPS = [
 
     # Django-honeypot
     'honeypot',
+
+    # Django-recaptcha
+    # https://github.com/praekelt/django-recaptcha
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -227,3 +231,17 @@ SESSION_ENGINE = 'user_sessions.backends.db'
 LOGOUT_REDIRECT_URL = "/"
 
 SILENCED_SYSTEM_CHECKS = ['admin.E410']
+
+# Django-honeypot
+# https://pypi.org/project/django-honeypot/
+HONEYPOT_FIELD_NAME = "secret_key"
+
+# Django-recaptcha
+# https://github.com/praekelt/django-recaptcha
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+RECAPTCHA_REQUIRED_SCORE = config(
+    'RECAPTCHA_REQUIRED_SCORE',
+    cast=float,
+    default=0.5
+)
