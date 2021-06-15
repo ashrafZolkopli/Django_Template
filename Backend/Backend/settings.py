@@ -58,6 +58,9 @@ INSTALLED_APPS = [
 
     # Django-honeypot
     'honeypot',
+
+    # Custom Google ReCaptcha
+    'G_Recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +90,9 @@ MIDDLEWARE = [
     # Django-honeypot
     # https://pypi.org/project/django-honeypot/
     'honeypot.middleware.HoneypotMiddleware',
+
+    # Custom Google ReCaptcha
+    'G_Recaptcha.middleware.RecaptchaMiddleware',
 ]
 
 ROOT_URLCONF = 'Backend.urls'
@@ -227,3 +233,12 @@ SESSION_ENGINE = 'user_sessions.backends.db'
 LOGOUT_REDIRECT_URL = "/"
 
 SILENCED_SYSTEM_CHECKS = ['admin.E410']
+
+# Django-honeypot
+# https://pypi.org/project/django-honeypot/
+HONEYPOT_FIELD_NAME = "secret_key"
+
+# Custom Google Recaptcha
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+RECAPTCHA_REQUIRED_SCORE = config('RECAPTCHA_REQUIRED_SCORE', cast=float)
