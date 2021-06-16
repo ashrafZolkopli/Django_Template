@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Django-Password-validators
     'django_password_validators',
@@ -61,7 +62,14 @@ INSTALLED_APPS = [
 
     # Custom Google ReCaptcha
     'G_Recaptcha',
+
+    # Django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,6 +138,17 @@ DATABASES = {
 
 # Custom User Model
 AUTH_USER_MODEL = 'User.User'
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # Django-allauth
+    # `allauth` specific authentication methods, such as login by e-mail
+    # https://django-allauth.readthedocs.io/en/latest/installation.html
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -230,6 +249,8 @@ SESSION_ENGINE = 'user_sessions.backends.db'
 
 
 # Common Django Settings
+LOGIN_URL = "account/login"
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 SILENCED_SYSTEM_CHECKS = ['admin.E410']
@@ -242,3 +263,17 @@ HONEYPOT_FIELD_NAME = "secret_key"
 RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 RECAPTCHA_REQUIRED_SCORE = config('RECAPTCHA_REQUIRED_SCORE', cast=float)
+
+# Django-allauth
+# https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+
+
+# Django Email Backend
+# https://docs.djangoproject.com/en/3.2/topics/email/#obtaining-an-instance-of-an-email-backend
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR.joinpath('test').joinpath('email')
